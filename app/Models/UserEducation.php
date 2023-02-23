@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Opportunity extends Model
+class UserEducation extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $table = "users_education";
 
     /**
      * The attributes that are mass assignable.
@@ -17,11 +18,11 @@ class Opportunity extends Model
      */
     protected $fillable = [
         'name',
-        'salary',
+        'score',
         'description',
-        'opportunities_type_id',
-        'company_id',
-        'state_id',
-        'status'
+        'initial_date',
+        'final_date',
+        'institution_id',
+        'user_id'
     ];
 }

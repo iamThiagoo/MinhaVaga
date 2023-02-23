@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class City extends Model
+class UserSkill extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+    protected $table = "users_skills";
 
     /**
      * The attributes that are mass assignable.
@@ -15,8 +17,7 @@ class City extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'state_id',
-        'ibge',
+        'skill_id', 
+        'user_id'
     ];
 }

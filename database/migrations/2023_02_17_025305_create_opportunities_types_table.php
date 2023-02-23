@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->char('name', 50);
             $table->boolean('status')->default(TRUE);
+            $table->timestamps();
         });
     }
 

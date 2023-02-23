@@ -19,7 +19,8 @@ return new class extends Migration
             $table->char('fluency', 1);  // B = BASIC, I = INTERMEDIARY, A = ADVANCED, F = FLUENT
             $table->foreignId('idiom_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->boolean('status');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

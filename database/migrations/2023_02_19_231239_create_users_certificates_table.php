@@ -19,10 +19,11 @@ return new class extends Migration
             $table->char('name', 200);
             $table->date('initial_date');
             $table->date('final_date');
-            $table->char('code_certificado', 150);
-            $table->string('url_certificado');
+            $table->char('code_certificate', 150);
+            $table->string('url_certificate');
             $table->foreignId('institution_id')->constrained();
-            $table->boolean('status');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

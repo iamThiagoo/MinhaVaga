@@ -23,10 +23,12 @@ return new class extends Migration
             $table->char('phone', 20);
             $table->string('password');
             $table->char('email', 150)->unique();
-            $table->string('user_photo')->nullable();
+            $table->string('photo')->nullable();
             $table->foreignId('city_id')->constrained();
             $table->foreignId('state_id')->constrained();
             $table->rememberToken();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

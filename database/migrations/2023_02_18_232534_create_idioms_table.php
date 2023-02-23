@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('idioms', function (Blueprint $table) {
             $table->id();
             $table->char('name', 100);
+            $table->timestamps();
         });
     }
 

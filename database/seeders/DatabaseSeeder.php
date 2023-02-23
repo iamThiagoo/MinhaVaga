@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\OpportunityType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            StateSeeder::class,
+            CitySeeder::class,
+            UserSeeder::class,
+            CompanySeeder::class,
+            OpportunityTypeSeeder::class,
+            OpportunitySeeder::class,
+            InstitutionSeeder::class,
+            SkillSeeder::class,
+            IdiomSeeder::class
+        ]);
     }
 }
