@@ -23,10 +23,12 @@ return new class extends Migration
             $table->char('slug', 150);
             $table->char('cnpj_cpf', 25);
             $table->text('bio')->nullable();
-            $table->string('company_photo')->nullable();
+            $table->string('photo')->nullable();
             $table->foreignId('city_id')->constrained();
             $table->foreignId('state_id')->constrained();
-            $table->boolean('status')->default(true);
+            $table->rememberToken();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

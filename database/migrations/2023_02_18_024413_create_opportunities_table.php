@@ -19,10 +19,12 @@ return new class extends Migration
             $table->float('salary');
             $table->text('description');
             $table->foreignId('opportunities_type_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('company_id')->constrained();
             $table->foreignId('city_id')->constrained();
             $table->foreignId('state_id')->constrained();
             $table->boolean('status')->default(true);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

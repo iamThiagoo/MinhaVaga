@@ -18,7 +18,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('skill_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->boolean('status');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

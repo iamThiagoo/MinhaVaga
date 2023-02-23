@@ -24,7 +24,8 @@ return new class extends Migration
             $table->boolean('current_work');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('opportunities_type_id')->constrained();
-            $table->boolean('status')->default(true);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

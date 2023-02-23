@@ -17,7 +17,8 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->char('name', 200);
-            $table->boolean('status')->default(true);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
