@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "jquery": "^3.6.3",
+        "jquery-mask-plugin": "^1.14.16",
         "tiny-slider": "^2.9.4"
     }
 }

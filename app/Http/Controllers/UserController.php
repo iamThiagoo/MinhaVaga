@@ -2,32 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('auth.register');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $user = array_merge($request->validated(), [
+            'slug' => strtolower(str_replace(' ', '', $request->validated('name'))) . rand(100, 9999)
+        ]);
+
+        $user_created = User::create($user);
+        Auth::login($user_created);
+
+        return redirect()->route('profile');
     }
 
     /**

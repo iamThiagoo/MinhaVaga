@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Models\City;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +22,27 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+# Get cities and states when necessary, like register and edit profile
+Route::get('cities/{state_id}', function (Request $request) {
+    $state_id = $request->state_id;
+    $cities   = City::where('state_id', "=", $state_id)->orderBy('name')->get()->toArray();
+    
+    // Return cities in json format
+    return response()->json($cities);
 });
 
-require __DIR__.'/auth.php';
+Route::middleware('guest')->group( function () {
+
+    Route::get('register',  [UserController::class, 'create'])->name('register');
+    Route::post('register', [UserController::class, 'store']);
+
+    Route::get('login',  [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    
+});
+
+Route::middleware('auth')->group( function () {
+
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile');
+
+});

@@ -20,10 +20,10 @@
         <div class="flex -mt-1">
             <ul class="flex flex-1 gap-7 items-center">
                 <li>
-                    <a href="#" class="md:text-base lg:text-lg text-lg text-gray-900 font-black transition ease-in duration-200 hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Login</a>
+                    <a href="{{ route('login') }}" class="md:text-base lg:text-lg text-lg text-gray-900 font-black transition ease-in duration-200 hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Login</a>
                 </li>
                 <li>
-                    <a href="#" class="md:text-base lg:text-lg text-lg bg-gray-900 text-white p-2 rounded-md font-bold transition ease-in duration-200 hover:opacity-90 hover:bg-sky-700">Cadastre-se</a>
+                    <a href="{{ route('register') }}" class="md:text-base lg:text-lg text-lg bg-gray-900 text-white py-2 px-4 rounded-md font-bold transition ease-in duration-200 hover:opacity-90 hover:bg-sky-700">Cadastre-se</a>
                 </li>
             </ul>
         </div>
@@ -43,8 +43,8 @@
 
         <nav class="hidden h-screen w-4/5 fixed top-0 right-0 z-20 bg-white border border-white" id="menuMobile">
             <div class="flex flex-1 flex-col py-5 bg-cyan-700 gap-4">
-                <a href="#" class="text-white bg-cyan-900 mx-auto border border-white py-2.5 w-11/12 rounded-sm text-center hover:opacity-95"> Cadastre-se gratuitamente </a>
-                <a href="#" class="text-white mx-auto border border-white py-2.5 w-11/12 rounded-sm text-center hover:opacity-95"> Entrar </a>
+                <a href="{{ route('register') }}" class="text-white bg-cyan-900 mx-auto border border-white py-2.5 w-11/12 rounded-sm text-center hover:opacity-95"> Cadastre-se gratuitamente </a>
+                <a href="{{ route('login') }}" class="text-white mx-auto border border-white py-2.5 w-11/12 rounded-sm text-center hover:opacity-95"> Entrar </a>
             </div>
             <div class="p-5">
                 <div>

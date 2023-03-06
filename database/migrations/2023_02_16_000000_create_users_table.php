@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->foreignId('city_id')->constrained();
             $table->foreignId('state_id')->constrained();
+            $table->timestamp('profile_created_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
