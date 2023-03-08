@@ -16,8 +16,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $arrayName = explode(' ', $request->user()->name);
+
         return view('profile.edit', [
             'user' => $request->user(),
+            'firstname' => $arrayName[0]
         ]);
     }
 

@@ -1,5 +1,7 @@
+@section('title', 'Registre-se')
+
 <x-app-layout>
-    <div class="container flex justify-center flex-1 w-full gap-20 pb-5 mx-auto px-7 lg:p-0 lg:my-10 min-h-3/4">
+    <section class="container flex justify-center flex-1 w-full gap-20 pb-5 mx-auto px-7 lg:p-0 lg:my-10 min-h-3/4">
         <div class="flex flex-col justify-center lg:w-4/12">
             <div class="mb-4">
                 <h2 class="mt-3 text-3xl font-black xl:text-4xl lg:text-3xl lg:mt-0 lg:mb-3">Inscreva-se agora mesmo no <span class="text-sky-800"> MinhaVaga </span></h2>
@@ -103,7 +105,7 @@
         </div>
 
         <img src="{{ asset('images/svg/register.svg') }}" class="hidden w-5/12 p-4 lg:block" />
-    </div>
+    </section>
 
     <script type="module">
         $(document).ready(function () {

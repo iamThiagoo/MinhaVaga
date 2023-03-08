@@ -1,7 +1,9 @@
+@section('title', 'Login')
+
 <x-app-layout>
 
     {{-- Desktop screen --}}
-    <div class="container justify-center flex-1 hidden gap-20 mx-auto lg:flex h-3/4">
+    <section class="container justify-center flex-1 hidden gap-20 mx-auto lg:flex h-3/4">
         <div class="flex flex-col justify-center w-4/12">
             <div class="mb-4">
                 <h2 class="mt-3 text-3xl font-black lg:text-5xl lg:mt-0 lg:mb-3">Acesse sua conta!</h2>
@@ -46,10 +48,10 @@
         </div>
 
         <img src="{{ asset('images/svg/login.svg') }}" class="w-2/6 p-3" />
-    </div>
+    </section>
 
     {{-- Mobile screen --}}
-    <div class="container flex justify-center flex-1 px-7 lg:hidden h-min-3/6 md:flex">
+    <section class="container flex justify-center flex-1 px-7 lg:hidden h-min-3/6 md:flex">
         <div class="flex flex-col justify-center mt-20 mb-32">
             <div class="mb-4">
                 <h2 class="mt-3 text-3xl font-black lg:text-5xl lg:mt-0 lg:mb-3">Acesse sua conta!</h2>
@@ -89,5 +91,5 @@
                 
             </form>
         </div>
-    </div>
+    </section>
 </x-app-layout>

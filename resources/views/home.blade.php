@@ -1,5 +1,7 @@
+@section('title', 'Home')
+
 <x-app-layout>
-    <div class="container justify-between px-5 mx-auto">
+    <section class="container justify-between px-5 mx-auto">
 
         {{-- Banner --}}
         <div class="flex items-center justify-center">
@@ -58,5 +60,5 @@
                 <a href="#" class="text-lg font-bold text-cyan-500 lg:text-base"> Visualizar mais vagas </a>
             </div>
         </div>
-    </div>
+    </section>
 </x-app-layout>

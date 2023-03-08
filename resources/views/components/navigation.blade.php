@@ -19,12 +19,21 @@
     
         <div class="flex -mt-1">
             <ul class="flex flex-1 gap-7 items-center">
-                <li>
-                    <a href="{{ route('login') }}" class="md:text-base lg:text-lg text-lg text-gray-900 font-black transition ease-in duration-200 hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Login</a>
-                </li>
-                <li>
-                    <a href="{{ route('register') }}" class="md:text-base lg:text-lg text-lg bg-gray-900 text-white py-2 px-4 rounded-md font-bold transition ease-in duration-200 hover:opacity-90 hover:bg-sky-700">Cadastre-se</a>
-                </li>
+
+                @guest
+                    <li>
+                        <a href="{{ route('login') }}" class="md:text-base lg:text-lg text-lg text-gray-900 font-black transition ease-in duration-200 hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('register') }}" class="md:text-base lg:text-lg text-lg bg-gray-900 text-white py-2 px-4 rounded-md font-bold transition ease-in duration-200 hover:opacity-90 hover:bg-sky-700">Cadastre-se</a>
+                    </li>
+                @endguest
+
+                @auth
+                    <li>
+                        <a href="{{ route('login') }}" class="md:text-base lg:text-lg text-lg text-gray-900 font-black transition ease-in duration-200 hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Login</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>
