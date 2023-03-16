@@ -48,7 +48,7 @@
                 <div class="flex flex-col flex-1 max-w-full mt-0 xl:gap-3 xl:mt-5 xl:flex-row">
                     {{-- State --}}
                     <select 
-                        name="state_id" id="state"
+                        name="state_id" id="state" :value="old('state_id')"
                         class="mt-5 rounded-md shadow-sm xl:mt-0 xl:w-3/6 focus:border-sky-600 focus:ring-sky-600" 
                         required >
                         <option value="">Selecione o seu estado</option>
@@ -59,7 +59,7 @@
         
                     {{-- City --}}
                     <select 
-                        name="city_id" id="city" 
+                        name="city_id" id="city" :value="old('city_id')"
                         class="mt-5 rounded-md shadow-sm xl:mt-0 xl:w-3/6 focus:border-sky-600 focus:ring-sky-600" 
                         disabled required >
                         <option value="">Selecione a sua cidade</option>
