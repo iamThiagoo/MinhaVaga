@@ -5,8 +5,7 @@ import Alpine from 'alpinejs';
 import $ from "jquery";
 window.$ = $;
 
-import mask from 'jquery-mask-plugin';
-window.mask = mask;
+import 'jquery-mask-plugin';
 
 window.Alpine = Alpine;
 // window.tns = tns;
