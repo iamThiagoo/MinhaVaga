@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="h-screen">
-        <x-navigation />
+        @include('layouts.navigation')
         
         {{ $slot }}
         

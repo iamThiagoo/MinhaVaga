@@ -24,7 +24,6 @@ class StoreUserExperienceRequest extends FormRequest
         return [
             'name' => 'required',
             'initial_date' => 'required|date',
-            'user_id' => 'required|integer',
             'opportunities_type_id' => 'required|integer'
         ];
     }

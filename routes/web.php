@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::fallback( function () {
+    return view('page_not_found');
+});
+
 # Get cities and states when necessary, like register and edit profile
 Route::get('cities/{state_id}', function (Request $request) {
     $state_id = $request->state_id;
@@ -43,9 +47,6 @@ Route::middleware('guest')->group( function () {
 });
 
 Route::middleware('auth')->group( function () {
-
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-
     Route::resource('/experience', UserExperienceController::class);
-
 });

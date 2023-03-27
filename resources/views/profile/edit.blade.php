@@ -14,7 +14,7 @@
                 <div class="">
                     <div class="flex items-center justify-center img-profile">
                         <img class="cursor-pointer user-photo" style="background: rgb(228, 228, 228); object-fit: contain; width: 150px; height: 150px; border-radius: 50%">
-                        <p class="cursor-pointer absolute text-center text-white camera-img-icon hidden">
+                        <p class="absolute hidden text-center text-white cursor-pointer camera-img-icon">
                             <i class="fa-solid fa-camera-retro"></i><br>
                             Adicionar foto
                         </p>
@@ -44,7 +44,7 @@
 
                 {{-- Experiences --}}
                 <div>
-                    <button class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">
+                    <button class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-data="" x-on:click.prevent="$dispatch('open-modal', 'experience-user-modal')">
                         <p>Adicionar Experiência</p>
                         <p class="text-xl"> + </p>
                     </button>
@@ -52,7 +52,7 @@
 
                 {{-- Education --}}
                 <div class="mt-7">
-                    <button class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2">
+                    <button class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-data="" x-on:click.prevent="$dispatch('open-modal', 'education-user-modal')">
                         <p>Adicionar Formação Acadêmica</p>
                         <p class="text-xl"> + </p>
                     </button>
@@ -60,7 +60,7 @@
 
                 {{-- Certificates --}}
                 <div class="mt-7">
-                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2">
+                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-data="" x-on:click.prevent="$dispatch('open-modal', 'certificate-user-modal')">
                         <p>Adicionar Licenças ou Certificados</p>
                         <p class="text-xl"> + </p>
                     </div>
@@ -68,7 +68,7 @@
 
                 {{-- Competences --}}
                 <div class="mt-7">
-                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2">
+                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-data="" x-on:click.prevent="$dispatch('open-modal', 'competence-user-modal')">
                         <p>Adicionar Competências</p>
                         <p class="text-xl"> + </p>
                     </div>
@@ -76,18 +76,17 @@
 
                 {{-- Idioms --}}
                 <div class="mt-7">
-                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2">
+                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-data="" x-on:click.prevent="$dispatch('open-modal', 'idiom-user-modal')">
                         <p>Adicionar Idiomas</p>
                         <p class="text-xl"> + </p>
                     </div>
                 </div>
 
-
                 <div class="flex flex-col items-center justify-end gap-10 mt-10 lg:mb-5 lg:flex-row">
                     <a href="#" class="w-full mr-2 text-sm text-right underline gray-600 hover:text-gray-900">
                         Não quero fazer isso agora!
                     </a>
-                    <x-primary-button class="flex justify-center w-full gap-2 py-3">
+                    <x-primary-button class="flex justify-center w-full lg:w-96 text-sm gap-2 py-3 hover:opacity-90">
                         Salvar perfil
 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-5 h-5 ">
@@ -103,7 +102,20 @@
         </div>
     </section>
 
-    <x-experience-modal method="post" route="experience.store" />
+    {{-- Create Experience Form --}}
+    @include('profile.partials.experience.add-experience-modal')
+
+    {{-- Create Education Form --}}
+    @include('profile.partials.education.add-education-modal')
+
+    {{-- Create Certificate Form --}}
+    @include('profile.partials.certificate.add-certificate-modal')
+
+    {{-- Create Competence Form --}}
+    @include('profile.partials.competence.add-competence-modal')
+
+    {{-- Create Idiom Form --}}
+    @include('profile.partials.idiom.add-idiom-modal')
 
     <script type="module">
 

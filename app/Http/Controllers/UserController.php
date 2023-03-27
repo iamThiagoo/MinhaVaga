@@ -29,7 +29,7 @@ class UserController extends Controller
         $user_created = User::create($user);
         Auth::login($user_created);
 
-        return redirect()->route('profile.edit');
+        return redirect(route('profile.edit'));
     }
 
     /**
