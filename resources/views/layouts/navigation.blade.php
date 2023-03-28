@@ -12,7 +12,7 @@
                     <a href="#" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base lg:text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Vagas</a>
                 </li>
                 <li>
-                    <a href="#" class="font-black text-gray-900 transition duration-200 ease-in md:text-base lg:text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Anunciar</a>
+                    <a href="#" class="font-black text-gray-900 transition duration-200 ease-in md:text-base text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Anunciar</a>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,7 @@
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 text-sm font-black leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md lg:text-base hover:text-gray-700 focus:outline-none">
+                            <button class="inline-flex items-center px-3 py-2 text-xl font-black leading-4 text-gray-800 transition duration-150 ease-in-out bg-white border border-transparent rounded-md lg:text-base hover:text-gray-700 focus:outline-none">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
