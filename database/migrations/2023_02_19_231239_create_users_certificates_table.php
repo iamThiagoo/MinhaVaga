@@ -19,6 +19,7 @@ return new class extends Migration
             $table->char('name', 200);
             $table->date('initial_date');
             $table->date('final_date');
+            $table->boolean('no_expired')->default(false);
             $table->char('code_certificate', 150);
             $table->string('url_certificate');
             $table->foreignId('institution_id')->constrained();

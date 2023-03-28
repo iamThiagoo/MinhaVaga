@@ -2,33 +2,55 @@
     <form method="POST" action="#" class="p-6 bg-white">
         @csrf
         <h2 class="text-2xl font-medium text-gray-900"> Adicionar experiência </h2>
-        <p class="mt-2 text-sm text-gray-500">Conte para nós as suas experiências, o seu período e suas funções. Vamos adorar sabê-las!</p>
+        <p class="mt-2 text-sm text-gray-500">Adicione a sua formação de ensino...</p>
 
         <div class="mt-4">
 
             {{-- Name --}}
             <div class="mt-4">
-                <x-input-label for="name" value="Nome do Cargo" />
+                <x-input-label for="name" value="Nome do Curso" />
                 <x-text-input id="name" name="name" type="text" class="w-full mt-1" required  />
             </div>
 
-            {{-- Company --}}
-            <div class="mt-4">
-                <x-input-label for="company" value="Nome da Empresa" />
-                <x-text-input id="company" name="company" type="text" class="w-full mt-1" required  />
-            </div>
-
-            {{-- Type of Job --}}
+            {{-- Institution --}}
             <div class="mt-7">
-                <select 
+                <select
                     name="opportunity_job_id" id="opportunity_job_id"
-                    class="w-full rounded-md shadow-sm xl:mt-0 focus:border-sky-600 focus:ring-sky-600" 
+                    class="w-full rounded-md shadow-sm xl:mt-0 focus:border-sky-600 focus:ring-sky-600"
                     required >
-                    <option value="">Tipo do Emprego</option>
-                    @foreach (App\Models\OpportunityType::all()->sortBy("name") as $opportunity_type)
-                        <option name="{{ $opportunity_type->name }}" value="{{ $opportunity_type->id }}">{{ $opportunity_type->name }}</option>
+                    <option value=""> Nome da Instituição </option>
+                    @foreach (App\Models\Institution::all()->sortBy("name") as $institution)
+                        <option name="{{ $institution->name }}" value="{{ $institution->id }}">{{ $institution->name }}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="flex flex-col gap-5 mt-5 lg:flex-row lg:w-full">
+
+                {{-- Initial Date --}}
+                <div class="w-full">
+                    <x-input-label for="initial_date" value="Data Inicial" />
+                    <x-text-input id="initial_date" name="initial_date" type="date" class="w-full mt-1" required  />
+                </div>
+
+                {{-- Last Date --}}
+                <div class="w-full">
+                    <x-input-label for="final_date" value="Data de Término" />
+                    <x-text-input id="final_date" name="final_date" type="date" class="w-full mt-1"  />
+                </div>
+
+            </div>
+
+            {{-- Score (Optional) --}}
+            <div class="mt-4">
+                <x-input-label for="score" value="Nota Final (Opcional)" />
+                <x-text-input id="score" name="score" type="text" class="w-full mt-1" />
+            </div>
+
+            {{-- Description --}}
+            <div class="my-6">
+                <x-input-label for="description" class="mt-2" value="Descrição/Detalhes do Curso" />
+                <textarea id="description" class="block w-full mt-2 rounded-md shadow-sm focus:border-sky-600 focus:ring-sky-600" name="details" rows="6" autofocus></textarea>
             </div>
 
         </div>
@@ -39,7 +61,7 @@
             </x-secondary-button>
 
             <x-primary-button class="ml-3 text-sm">
-                Salvar experiência
+                Salvar Educação/Formação
             </x-primary-button>
         </div>
     </form>

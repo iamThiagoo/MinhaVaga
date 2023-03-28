@@ -2,7 +2,6 @@
     <form method="POST" action="#" class="p-6 bg-white">
         @csrf
         <h2 class="text-2xl font-medium text-gray-900"> Adicionar idioma </h2>
-        <p class="mt-2 text-sm text-gray-500">Conte para nós as suas experiências, o seu período e suas funções. Vamos adorar sabê-las!</p>
 
         <div class="mt-4">
 
@@ -26,7 +25,7 @@
                     <option name="F" value="F"> Nível Fluente </option>
                 </select>
             </div>
-            
+
         </div>
 
         <div class="flex justify-end mt-6">

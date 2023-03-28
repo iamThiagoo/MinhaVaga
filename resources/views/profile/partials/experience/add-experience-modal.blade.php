@@ -20,9 +20,9 @@
 
             {{-- Type of Job --}}
             <div class="mt-7">
-                <select 
+                <select
                     name="opportunity_job_id" id="opportunity_job_id"
-                    class="w-full rounded-md shadow-sm xl:mt-0 focus:border-sky-600 focus:ring-sky-600" 
+                    class="w-full rounded-md shadow-sm xl:mt-0 focus:border-sky-600 focus:ring-sky-600"
                     required >
                     <option value="">Tipo do Emprego</option>
                     @foreach (App\Models\OpportunityType::all()->sortBy("name") as $opportunity_type)
