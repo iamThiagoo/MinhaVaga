@@ -1,7 +1,7 @@
 <x-modal name="education-user-modal" x-show="true" focusable>
     <form method="POST" action="#" class="p-6 bg-white">
         @csrf
-        <h2 class="text-2xl font-medium text-gray-900"> Adicionar experiência </h2>
+        <h2 class="text-2xl font-medium text-gray-900"> Adicionar Formação Acadêmica </h2>
         <p class="mt-2 text-sm text-gray-500">Adicione a sua formação de ensino...</p>
 
         <div class="mt-4">

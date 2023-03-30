@@ -99,7 +99,7 @@
 
                 {{-- Competences --}}
                 <div class="mt-7">
-                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-data="" x-on:click.prevent="$dispatch('open-modal', 'competence-user-modal')">
+                    <div class="flex cursor-pointer justify-between w-full py-1.5 text-lg text-gray-600 border-b-2" x-data="" x-on:click.prevent="$dispatch('open-modal', 'skill-user-modal')">
                         <p>Adicionar Competências</p>
                         <p class="text-xl"> + </p>
                     </div>
@@ -143,7 +143,7 @@
     @include('profile.partials.certificate.add-certificate-modal')
 
     {{-- Create Competence Form --}}
-    @include('profile.partials.competence.add-competence-modal')
+    @include('profile.partials.skill.add-skill-modal')
 
     {{-- Create Idiom Form --}}
     @include('profile.partials.idiom.add-idiom-modal')
