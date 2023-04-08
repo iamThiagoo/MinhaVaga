@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\UserEducationController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserExperienceController;
+use App\Http\Controllers\User\UserExperienceController;
 use App\Models\City;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -48,5 +49,7 @@ Route::middleware('guest')->group( function () {
 
 Route::middleware('auth')->group( function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::resource('/experience', UserExperienceController::class);
+    Route::resource('/education',  UserEducationController::class);
 });

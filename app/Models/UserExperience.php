@@ -18,12 +18,12 @@ class UserExperience extends Model
      */
     protected $fillable = [
         'name',
+        'company',
+        'opportunities_type_id',
         'initial_date',
         'final_date',
-        'details',
-        'company',
         'current_work',
         'user_id',
-        'opportunities_type_id'
+        'details'
     ];
 }

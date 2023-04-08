@@ -1,5 +1,5 @@
 <x-modal name="experience-user-modal" x-show="true" focusable>
-    <form method="POST" action="#" class="p-6 bg-white">
+    <form method="POST" action="{{ route('experience.store') }}" class="p-6 bg-white">
         @csrf
         <h2 class="text-2xl font-medium text-gray-900"> Adicionar experiência </h2>
         <p class="mt-2 text-sm text-gray-500">Conte para nós as suas experiências, o seu período e suas funções. Vamos adorar sabê-las!</p>
@@ -40,8 +40,8 @@
 
                 {{-- Last Date --}}
                 <div class="w-full">
-                    <x-input-label for="last_date" value="Data de Término" />
-                    <x-text-input id="last_date" name="last_date" type="date" class="w-full mt-1"  />
+                    <x-input-label for="final_date" value="Data de Término" />
+                    <x-text-input id="final_date" name="final_date" type="date" class="w-full mt-1"  />
                 </div>
             </div>
 
@@ -68,4 +68,21 @@
             </x-primary-button>
         </div>
     </form>
+
+    <script type="module">
+
+        $('#current_work').change( function () {
+            let finalDate = document.querySelector('#final_date');
+
+            if ($(this).is(':checked')) {
+                finalDate.setAttribute('disabled', true);
+                finalDate.style.opacity = ".5";
+
+            } else {;
+                finalDate.removeAttribute('disabled');
+                finalDate.style.opacity = "1";
+            }
+        });
+
+    </script>
 </x-modal>

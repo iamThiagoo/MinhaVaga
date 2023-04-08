@@ -24,7 +24,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'required|regex:/^\S*\s+\S*$/', # Regular expression for string to contain at least one space
             'birthday' => 'required|date',
-            'email' => 'required|email:rfc,dns|unique:users',
+            'email' => 'required|email|unique:users',
             'cpf'=> 'required|regex:/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/|unique:users', # Regular expression for string to be in CPF format
             'phone' => 'required|regex:/^\(\d{2}\)\s\d{5}\-\d{4}$/', # Regular expression for string to be in phone format
             'state_id' => 'required|integer',

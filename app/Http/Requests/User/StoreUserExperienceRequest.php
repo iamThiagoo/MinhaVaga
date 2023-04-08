@@ -23,8 +23,12 @@ class StoreUserExperienceRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'company' => 'required',
+            'opportunity_job_id' => 'required|integer',
             'initial_date' => 'required|date',
-            'opportunities_type_id' => 'required|integer'
+            'final_date' => 'sometimes|date|after:initial_date',
+            'current_work' => 'sometimes|required_if:final_date, null',
+            'details' => 'sometimes|string'
         ];
     }
 }
