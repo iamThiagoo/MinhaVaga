@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,8 +27,8 @@ class StoreUserExperienceRequest extends FormRequest
             'opportunity_job_id' => 'required|integer',
             'initial_date' => 'required|date',
             'final_date' => 'sometimes|date|after:initial_date',
-            'current_work' => 'sometimes|required_if:final_date, null',
-            'details' => 'sometimes|string'
+            'current_work' => 'sometimes',
+            'details' => 'sometimes'
         ];
     }
 }

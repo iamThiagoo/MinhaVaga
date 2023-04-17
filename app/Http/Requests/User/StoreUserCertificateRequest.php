@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,7 +11,7 @@ class StoreUserCertificateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreUserCertificateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string',
+            'institution_id' => 'required|integer',
+            'initial_date' => 'required|date',
+            'final_date' => 'sometimes|date|gt:initial_date',
+            'no_expired' => 'sometimes',
+            'code_certificate' => 'sometimes',
+            'url_certificate' => 'sometimes'
         ];
     }
 }

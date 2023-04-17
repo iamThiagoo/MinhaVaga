@@ -17,12 +17,12 @@ return new class extends Migration
         Schema::create('users_education', function (Blueprint $table) {
             $table->id();
             $table->char('name', 200);
-            $table->float('score');
-            $table->text('description');
+            $table->foreignId('institution_id')->constrained();
             $table->date('initial_date');
             $table->date('final_date');
-            $table->foreignId('institution_id')->constrained();
+            $table->text('details')->nullable();
             $table->foreignId('user_id')->constrained();
+            $table->float('score')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

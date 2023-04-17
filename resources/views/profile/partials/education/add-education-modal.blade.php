@@ -1,5 +1,5 @@
 <x-modal name="education-user-modal" x-show="true" focusable>
-    <form method="POST" action="#" class="p-6 bg-white">
+    <form method="POST" action="{{ route('education.store') }}" class="p-6 bg-white">
         @csrf
         <h2 class="text-2xl font-medium text-gray-900"> Adicionar Formação Acadêmica </h2>
         <p class="mt-2 text-sm text-gray-500">Adicione a sua formação de ensino...</p>
@@ -15,7 +15,7 @@
             {{-- Institution --}}
             <div class="mt-7">
                 <select
-                    name="opportunity_job_id" id="opportunity_job_id"
+                    name="institution_id" id="institution_id"
                     class="w-full rounded-md shadow-sm xl:mt-0 focus:border-sky-600 focus:ring-sky-600"
                     required >
                     <option value=""> Nome da Instituição </option>
@@ -49,7 +49,7 @@
 
             {{-- Description --}}
             <div class="my-6">
-                <x-input-label for="description" class="mt-2" value="Descrição/Detalhes do Curso" />
+                <x-input-label for="details" class="mt-2" value="Descrição/Detalhes do Curso" />
                 <textarea id="description" class="block w-full mt-2 rounded-md shadow-sm focus:border-sky-600 focus:ring-sky-600" name="details" rows="6" autofocus></textarea>
             </div>
 
@@ -61,7 +61,7 @@
             </x-secondary-button>
 
             <x-primary-button class="ml-3 text-sm">
-                Salvar Educação/Formação
+                Adicionar
             </x-primary-button>
         </div>
     </form>

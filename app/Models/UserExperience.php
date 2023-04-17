@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserExperience extends Model
 {
     use HasFactory, SoftDeletes;
+    
     protected $table = "users_experiences";
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.

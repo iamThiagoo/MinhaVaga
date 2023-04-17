@@ -3,41 +3,24 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserEducationRequest;
+use App\Http\Requests\User\StoreUserEducationRequest;
+use App\Models\UserEducation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserEducationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreUserEducationRequest $request)
     {
-        //
-    }
+        $user_education = array_merge($request->validated(), [
+            'user_id' => Auth::user()->id
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        UserEducation::create($user_education);
+        return redirect()->back();
     }
 
     /**
@@ -61,6 +44,11 @@ class UserEducationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user_education = UserEducation::find($id);
+
+        if ($user_education->user_id == Auth::user()->id)
+            $user_education->delete();
+
+        return redirect()->back();
     }
 }

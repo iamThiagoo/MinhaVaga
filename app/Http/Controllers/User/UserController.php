@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\User\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -30,7 +31,7 @@ class UserController extends Controller
         $user_created = User::create($user);
         Auth::login($user_created);
 
-        return redirect(route('profile.edit'));
+        return redirect()->route('profile.edit');
     }
 
     /**
@@ -54,7 +55,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        if(!empty($request['photo'])) {
+            $imageName = $this->storageImage($request['photo']);
+            $request->merge(['photo' => $imageName]);
+        }
+        
+        $user->update($request->except(['_token', '_method']));
+        return redirect()->back();
     }
 
     /**
@@ -63,5 +72,17 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    /**
+     * Include image in storage folder and return $imageName
+     */
+    public function storageImage (UploadedFile $image) : string
+    {
+        $imageName = uniqid() . "." . $image->extension();
+        $image->move(public_path('images/user_photos'), $imageName);
+
+        return $imageName;
     }
 }

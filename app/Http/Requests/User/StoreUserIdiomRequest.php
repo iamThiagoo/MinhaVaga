@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
+use App\Enums\Idiom;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreUserIdiomRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class StoreUserIdiomRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,8 @@ class StoreUserIdiomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'idiom_id' => 'required|integer',
+            'fluency'  => ['required', Rule::in('A', 'B', 'F', 'I')]
         ];
     }
 }

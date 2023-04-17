@@ -64,7 +64,7 @@
             </x-secondary-button>
 
             <x-primary-button class="ml-3 text-sm">
-                Salvar experiência
+                Adicionar
             </x-primary-button>
         </div>
     </form>

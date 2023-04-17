@@ -1,7 +1,7 @@
 <x-modal name="idiom-user-modal" x-show="true" focusable>
-    <form method="POST" action="#" class="p-6 bg-white">
+    <form method="POST" action="{{ route('idiom.store') }}" class="p-6 bg-white">
         @csrf
-        <h2 class="text-2xl font-medium text-gray-900"> Adicionar idioma </h2>
+        <h2 class="text-2xl font-medium text-gray-900"> Adicionar </h2>
 
         <div class="mt-4">
 
