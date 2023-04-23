@@ -5,3 +5,14 @@
 * {
     -webkit-tap-highlight-color: transparent;
 }
+
+#search-feed {
+    outline: 0;
+    border: 0;
+}
+
+#search-feed:focus {
+    box-shadow: none;
+    outline: 0;
+    border: 0;
+}

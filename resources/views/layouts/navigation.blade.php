@@ -6,14 +6,20 @@
         <div class="flex -mt-1">
             <ul class="flex items-center flex-1 gap-12">
                 <li>
-                    <a href="#" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base lg:text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Início</a>
+                    <a href="{{ route('home') }}" name="home" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base lg:text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Início</a>
                 </li>
                 <li>
-                    <a href="#" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base lg:text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Vagas</a>
+                    <a href="#" name="vagas" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base lg:text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Vagas</a>
                 </li>
                 <li>
-                    <a href="#" class="font-black text-gray-900 transition duration-200 ease-in md:text-base text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Anunciar</a>
+                    <a href="#" name="anunciar" class="font-black text-gray-900 transition duration-200 ease-in md:text-base text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Anunciar</a>
                 </li>
+
+                @auth
+                    <li>
+                        <a href="{{ route('feed') }}" name="feed" class="font-black text-gray-900 transition duration-200 ease-in md:text-base text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Meu Feed</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     
@@ -71,20 +77,6 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                                 </svg>
-                            </x-dropdown-link>
-
-                            {{-- Announce --}}
-                            <x-dropdown-link href="#" class="flex items-center justify-between my-1">
-                                <div class="flex items-center gap-1.5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                                    </svg>                                
-                                    Anunciar
-                                </div>
-
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                </svg>                                  
                             </x-dropdown-link>
 
                             {{-- Notifications --}}
@@ -151,21 +143,12 @@
                         // Get firstname user
                         $arrayName = explode(' ', Auth::user()->name);
                         $firstname = $arrayName[0];
-
-                        // Get time to create a friendly message
-                        $time = date('H');
-
-                        if ($time >= 19 || $time <= 5) {
-                            $msg = "Boa noite";
-                        } elseif ($time > 5 && $time <= 12) {
-                            $msg = "Bom dia";
-                        } else {
-                            $msg = "Boa tarde";
-                        }
-
                     @endphp
-
-                    <p class="text-lg mb-3 font-black">{{ $msg }} <span class="text-sky-700"> {{ $firstname }} </span>, o que vamos ver hoje? </p>
+                    
+                    <div class="flex items-center mb-3 gap-3">
+                        <img src="{{ Auth::user()->photo ? asset('images/user_photos/' . Auth::user()->photo) : asset('images/user.png') }}" width="50px" height="50px" />
+                        <p class="text-lg font-black"> {{ App\Helper\Helper::greetings() }} <span class="text-sky-700"> {{ $firstname }} </span>, o que vamos ver hoje? </p>
+                    </div>
                 @endauth
             </div>
             <ul class="flex flex-col">

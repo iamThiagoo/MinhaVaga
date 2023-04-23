@@ -61,4 +61,13 @@
             </div>
         </div>
     </section>
+
+    <script type="text/javascript">
+
+        var nav = document.querySelector('a[name=home]');
+        nav.classList.add('border-b-4');
+        nav.classList.add('border-sky-700');
+        nav.classList.add('pb-1');
+
+    </script>
 </x-app-layout>

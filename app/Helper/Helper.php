@@ -86,4 +86,23 @@ class Helper
         };
     }
 
+
+    /**
+     * Get time to create a friendly message
+     */
+    public static function greetings () : string
+    {
+        $time = date('H');
+
+        if ($time >= 19 || $time <= 5) {
+            $msg = "Boa noite";
+        } elseif ($time > 5 && $time <= 12) {
+            $msg = "Bom dia";
+        } else {
+            $msg = "Boa tarde";
+        }
+
+        return $msg;
+    }
+
 }
