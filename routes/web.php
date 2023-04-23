@@ -8,6 +8,7 @@ use App\Http\Controllers\User\UserExperienceController;
 use App\Http\Controllers\User\UserIdiomController;
 use App\Http\Controllers\User\UserCertificateController;
 use App\Http\Controllers\User\UserSkillController;
+use App\Http\Controllers\User\UserFeedController;
 use App\Models\City;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -41,19 +42,21 @@ Route::get('cities/{state_id}', function (Request $request) {
 });
 
 Route::middleware('guest')->group( function () {
-
     Route::get('register',  [UserController::class, 'create'])->name('register');
     Route::post('register', [UserController::class, 'store']);
 
     Route::get('login',  [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-    
 });
 
 Route::middleware('auth')->group( function () {
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
-    Route::resource('/user',        UserController::class);
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/feed', [UserFeedController::class, 'index'])->name('feed');
+
+    Route::resource('/user', UserController::class);
+    Route::put('/user.update/{user}/{redirect?}', [UserController::class, 'update'])->name('user.update.with.redirect');
+
     Route::resource('/idiom',       UserIdiomController::class);
     Route::resource('/skills',      UserSkillController::class);
     Route::resource('/education',   UserEducationController::class);

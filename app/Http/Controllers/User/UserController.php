@@ -53,17 +53,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id, string $redirect = null)
     {
         $user = User::findOrFail($id);
 
-        if(!empty($request['photo'])) {
-            $imageName = $this->storageImage($request['photo']);
-            $request->merge(['photo' => $imageName]);
+        if(!empty($request->file('user_photo'))) {
+            $imageName = $this->storageImage($request->file('user_photo'));
+            $request['photo'] = $imageName;
         }
-        
-        $user->update($request->except(['_token', '_method']));
-        return redirect()->back();
+
+        $user->update($request->except('_token', 'method'));
+        return !empty($redirect) ? redirect()->route($redirect) : redirect()->back();
     }
 
     /**

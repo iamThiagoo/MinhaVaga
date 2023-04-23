@@ -9,7 +9,7 @@
         </div>
 
         <div class="flex flex-col justify-center gap-10 px-5 mt-3 lg:px-0 lg:gap-20 lg:flex-row">
-            <form class="w-full my-3 lg:w-4/12" id="saveProfileForm" method="POST" action="{{ route('user.update', Auth::user()->id) }}" enctype="multipart/form-data">
+            <form class="w-full my-3 lg:w-4/12" id="saveProfileForm" method="POST" action="{{ route('user.update.with.redirect', ['user' => Auth::user()->id, 'redirect' => 'feed']) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -22,7 +22,7 @@
                         </p>
                     </div>
                     <label for="user-photo-input" id="user-photo-label"></label>
-                    <input type="file" class="hidden" id="user-photo-input" name="photo" accept="image/*">
+                    <input type="file" class="hidden" id="user-photo-input" name="user_photo" accept="image/*">
                 </div>
                 <div class="flex flex-col mt-3">
                     {{-- Name --}}
@@ -35,7 +35,7 @@
                     {{-- Bio --}}
                     <div class="mt-4">
                         <x-input-label for="bio" value="Adicione uma bio para o seu perfil..." />
-                        <textarea id="bio" class="block w-full mt-1 rounded-md shadow-sm focus:border-sky-600 focus:ring-sky-600" name="bio" rows="6" :value="old('bio')" autofocus></textarea>
+                        <textarea id="bio" class="block w-full mt-1 rounded-md shadow-sm focus:border-sky-600 focus:ring-sky-600" name="bio" rows="6" autofocus>{{ $user->bio }}</textarea>
                         <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                     </div>
                 </div>
@@ -201,14 +201,14 @@
 
                     @php $skills = App\Models\UserSkill::where('user_id', '=', Auth::user()->id)->get(); @endphp
 
-                    @if (!empty($skills))
+                    @if (!empty($skills) && count($skills) > 0)
                         <div class="flex mt-6 gap-3 flex-wrap">
                             @foreach ($skills as $skill)
                                 <form method="POST" action="{{ route('skills.destroy', $skill->id) }}" class="bg-cyan-600 cursor-pointer text-white text-sm rounded select-none flex p-2 gap-1 hover:opacity-90">
                                     @csrf
                                     @method('DELETE')
                                     
-                                    <span style="margin-top: 1.5px" name="{{ $skill->id }}" class="text-sm lg:text-base"> {{ $skill->skill->name }} </span>
+                                    <span style="margin-top: 1.5px" name="{{ $skill->id }}" class="text-sm lg:text-sm"> {{ $skill->skill->name }} </span>
 
                                     <button type="submit" class="m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="margin-top: 0.5px" class=" w-5 h-5">
@@ -255,7 +255,7 @@
                 </div>
 
                 <div class="flex flex-col items-center justify-end gap-10 mt-10 lg:mb-5 lg:flex-row">
-                    <a href="#" class="w-full mr-2 text-sm text-right underline gray-600 hover:text-gray-900">
+                    <a href="{{ route('feed') }}" class="w-full mr-2 text-sm text-right underline gray-600 hover:text-gray-900">
                         Não quero fazer isso agora!
                     </a>
                     <x-primary-button class="flex justify-center w-full lg:w-96 text-sm gap-2 py-3 hover:opacity-90" id="saveProfile">
@@ -350,7 +350,6 @@
 
             $('#saveProfileForm').submit();
         });
-
 
     </script>
 </x-app-layout>
