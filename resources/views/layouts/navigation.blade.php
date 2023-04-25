@@ -12,12 +12,12 @@
                     <a href="#" name="vagas" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base lg:text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Vagas</a>
                 </li>
                 <li>
-                    <a href="#" name="anunciar" class="font-black text-gray-900 transition duration-200 ease-in md:text-base text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Anunciar</a>
+                    <a href="#" name="anunciar" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Anunciar</a>
                 </li>
 
                 @auth
                     <li>
-                        <a href="{{ route('feed') }}" name="feed" class="font-black text-gray-900 transition duration-200 ease-in md:text-base text-lg hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Meu Feed</a>
+                        <a href="{{ route('feed') }}" name="feed" class="text-lg font-black text-gray-900 transition duration-200 ease-in md:text-base hover:opacity-90 hover:border-b-4 hover:border-sky-700 hover:pb-1">Meu Feed</a>
                     </li>
                 @endauth
             </ul>
@@ -139,15 +139,12 @@
                 @endguest
 
                 @auth
-                    @php
-                        // Get firstname user
-                        $arrayName = explode(' ', Auth::user()->name);
-                        $firstname = $arrayName[0];
-                    @endphp
-                    
-                    <div class="flex items-center mb-3 gap-3">
+                    <div class="flex items-center gap-3 pt-3 mb-4">
                         <img src="{{ Auth::user()->photo ? asset('images/user_photos/' . Auth::user()->photo) : asset('images/user.png') }}" width="50px" height="50px" />
-                        <p class="text-lg font-black"> {{ App\Helper\Helper::greetings() }} <span class="text-sky-700"> {{ $firstname }} </span>, o que vamos ver hoje? </p>
+                        <div class="flex flex-col">
+                            <p class="text-lg font-black"> <span class="text-sky-700"> {{ Auth::user()->name }} </span></p>
+                            <a href="#"> <span class="text-sm text-gray-500"> Ver meu perfil </span></a>
+                        </div>
                     </div>
                 @endauth
             </div>
@@ -250,7 +247,7 @@
 
                     {{-- Logout - Mobile --}}
                     <li class="py-1 my-5">
-                        <form method="POST" action="" class="flex items-center pr-3 justify-end gap-1 text-red-500">
+                        <form method="POST" action="" class="flex items-center justify-end gap-1 pr-3 text-red-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
                             </svg>                                      
