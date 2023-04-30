@@ -104,18 +104,7 @@
         </article>
     </main>
 
-    {{-- TODO: Turn component --}}
-    <div class="fixed bottom-0 items-center hidden px-5 py-2 bg-white border border-gray-500 rounded-t cursor-pointer lg:flex messages-box right-24 w-80">
-        <div class="flex items-center gap-2">
-            <h2 class="text-sm text-gray-800" style="margin-top: 2px">Minhas Conversas</h2>
-            <p class="bg-red-500 h-5 rounded-full p-0.5 px-1.5 text-white text-xs "> 6 </p>
-        </div>
-        <div class="absolute right-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-            </svg>              
-        </div>
-    </div>
+    <x-messages-list></x-messages-list>
 
     <script type="text/javascript">
 
@@ -125,9 +114,9 @@
         nav.classList.add('pb-1');
 
         // TODO: Search with ajax/fetch
-        document.querySelector('#search').addEventListener('keypress', (event) => {
-            console.log(event.target);
-        })
+        // document.querySelector('#search').addEventListener('keypress', (event) => {
+        //     console.log(event.target);
+        // });
 
     </script>
 </x-app-layout>
