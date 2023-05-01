@@ -9,6 +9,7 @@ use App\Http\Controllers\User\UserIdiomController;
 use App\Http\Controllers\User\UserCertificateController;
 use App\Http\Controllers\User\UserSkillController;
 use App\Http\Controllers\User\UserFeedController;
+use App\Http\Controllers\SearchController;
 use App\Models\City;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -31,6 +32,9 @@ Route::get('/', function () {
 Route::fallback( function () {
     return view('page_not_found');
 });
+
+// Route::get("/searchGlobal", [SearchController::class, 'searchGlobal'])->name('search.global');
+Route::get("/results", [SearchController::class, 'searchGlobal'])->name('search.global');
 
 # Get cities and states when necessary, like register and edit profile
 Route::get('cities/{state_id}', function (Request $request) {

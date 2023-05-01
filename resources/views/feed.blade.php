@@ -10,16 +10,52 @@
                 <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35px">
             </h2>
 
-            <form action="#" method="GET" class="w-full">
-                <div class="flex items-center gap-2">
-                    <label for="search-feed" class="flex items-center w-full gap-3 p-2 px-4 border border-gray-400 rounded">
+            <div class="w-full">
+                <div class="flex flex-col justify-center gap-2 rounded-sm">
+                    <label for="search-feed" id="label-search-feed" class="flex items-center w-full gap-3 p-2 px-4 border border-gray-400 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-500">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
                         <input id="search-feed" class="w-full p-0 border-0" type="text" name="search" placeholder="Pesquise por vagas, pessoas, publicações..." required autofocus />
                     </label>
+                    <div class="">
+                        <ul class='px-3 py-1 rounded-b bg-gray-100 border-x border-b border-gray-400 -mt-2'>
+                            <li class="px-3 pt-3 pb-2 border-b border-gray-400">
+                                <a href="" class="flex items-center w-full gap-3 hover:opacity-80">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg> 
+                                    fsdfsdf
+                                </a>
+                            </li>
+                            <li class="px-3 pt-3 pb-2 border-b border-gray-400">
+                                <a href="" class="flex items-center w-full gap-3 hover:opacity-80">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg> 
+                                    fsdfsdf
+                                </a>
+                            </li>
+                            <li class="px-3 pt-3 pb-2 border-b border-gray-400">
+                                <a href="" class="flex items-center w-full gap-3 hover:opacity-80">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg> 
+                                    fsdfsdf
+                                </a>
+                            </li>
+                            <li class="px-3 pt-3 pb-2 border-gray-400">
+                                <a href="" class="flex items-center w-full gap-3 hover:opacity-80">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg> 
+                                    fsdfsdf
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </form>
+            </div>
 
             <div class="flex gap-5 mt-5">
                 <a href="#" class="flex gap-2 hover:opacity-80"> 
@@ -49,7 +85,7 @@
                     </button>
                 </div>
 
-                <div class="grid gap-5 2xl:grid-cols-3 2xl:gap-3 xl:gap-2">
+                <div class="grid gap-5 lg:grid-cols-2 lg:gap-5 xl:gap-2 2xl:grid-cols-3 2xl:gap-3">
                     <x-opportunity-card />
                     <x-opportunity-card />
                     <x-opportunity-card />
@@ -71,7 +107,7 @@
                     </button>
                 </div>
 
-                <div class="grid gap-5 2xl:grid-cols-3 2xl:gap-3 xl:gap-2">
+                <div class="grid gap-5 lg:grid-cols-2 lg:gap-5 xl:gap-2 2xl:grid-cols-3 2xl:gap-3"">
                     <x-opportunity-card />
                     <x-opportunity-card />
                     <x-opportunity-card />
@@ -81,7 +117,7 @@
             </div>
         </section>
 
-        <article class="hidden w-full lg:flex lg:w-3/12">
+        <article class="hidden w-full lg:flex lg:w-4/12 xl:3/12">
             <div class="px-5 pt-5">
                 <div class="flex items-center gap-3 mb-3 cursor-pointer hover:opacity-90">
                     <img src="{{ Auth::user()->photo ? asset('images/user_photos/' . Auth::user()->photo) : asset('images/user.png') }}" width="60px" height="60px" />
@@ -113,10 +149,43 @@
         nav.classList.add('border-sky-700');
         nav.classList.add('pb-1');
 
-        // TODO: Search with ajax/fetch
-        // document.querySelector('#search').addEventListener('keypress', (event) => {
-        //     console.log(event.target);
-        // });
+        document.querySelector('#search-feed').addEventListener('keyup', (event) => {
+            if (event.target.value.length >= 2) {
+                requestGlobalSearch(event.target.value);
+
+                document.querySelector("#label-search-feed").classList.remove('rounded');
+            } else {
+                document.querySelector("#label-search-feed").classList.add('rounded');
+            }
+        });
+
+        async function requestGlobalSearch (value)
+        {
+            $.ajax({
+                type: 'GET',
+                url:  '{{ route("search.global") }}',
+                data: {
+                    q: value
+                },
+                dataType: 'json',
+                success: function(results){
+                    var result = "<ul class='fixed bg-red-500'>";
+
+                    $(results).each( function(index, key) {
+                        $(key).each(function (index, value) {
+                            result += "<li>" + value.name + "</li>";
+                            // if (key == 0 || key == 3) {
+
+                            // }
+                        });
+                    });
+
+                    result += "</ul>";
+
+                    document.querySelector('#search-feed').innerHTML = result;
+                }
+            });
+        }
 
     </script>
 </x-app-layout>
